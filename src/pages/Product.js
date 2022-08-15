@@ -1,31 +1,11 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Segaroo</title>
-    <!-- StyleSheets -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/product.css" />
-  </head>
-  <body>
-    <header class="header">
-      <a href="/" class="logo">Sega<span class="green">roo</span></a>
-
-      <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="">Products</a>
-        <a href="#contact">Contact Us</a>
-        <a href="login.html" class="btn">Login</a>
-      </nav>
-
-      <!-- Hamburger -->
-      <div class="hamburger">
-        <img src="./images/grid-outline.svg" alt="" />
-      </div>
-    </header>
-    <!-- Main -->
-    <section class="product">
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "./css/product.css"
+function Product() {
+  return (
+    <div className="Product">
+      <Header />
+      <section class="product">
         <h1 class="product-category">products</h1>
         <div class="product-container">
             <div class="product-card">
@@ -77,7 +57,7 @@
                 </div>
               </div>
           </div>
-          <br>
+        
           <div class="product-container">
             <div class="product-card">
               <div class="product-image">
@@ -129,66 +109,9 @@
               </div>
           </div>
     </section>
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-      <div class="top">
-        <div class="content">
-          <a href="" class="logo">Sega<span class="green">roo</span></a>
-          <p>
-            Lorem ipsum dolor sit amet,adipiscing elit. Eu, montes, metus
-            porttitor consectetur pretium. Euismod imperdiet
-          </p>
-        </div>
+      <Footer />
+    </div>
+  );
+}
 
-        <div class="links">
-          <div class="link">
-            <h4>Contact Information</h4>
-            <div>
-              <img src="./images/location-cross.svg" alt="" />
-              <span>Cilandak Timur, Jakarta Selatan,Jakarta.</span>
-            </div>
-            <div>
-              <img src="./images/sms-tracking.svg" alt="" />
-              <span>segaroo@gmail.com</span>
-            </div>
-          </div>
-
-          <div class="link">
-            <h4>Quick Links</h4>
-            <a href="#">Services</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Download</a>
-          </div>
-
-          <div class="link">
-            <h4>Legal</h4>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Term of Use</a>
-            <a href="#">Conditions</a>
-            <a href="#">Location</a>
-          </div>
-
-          <div class="link">
-            <h4>Connect with Us</h4>
-            <div>
-              <img src="./images/instagram.svg" alt="" />
-              <span>Instagram</span>
-            </div>
-            <div>
-              <img src="./images/twitter.svg" alt="" />
-              <span>Twitter</span>
-            </div>
-            <div>
-              <img src="./images/facebook.svg" alt="" />
-              <span>Facebook</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bottom">
-        <p>Copyright © 2010-2022 Segaroo Company S.L. All rights reserved.</p>
-      </div>
-    </footer>
-  </body>
-</html>
+export default Product;
