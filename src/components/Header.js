@@ -1,3 +1,6 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 function Header() {
   return (
     <header className="header">
@@ -6,13 +9,12 @@ function Header() {
         </a>
 
         <nav className="navbar">
-          <a href="#home">Home</a>
-          <a href="products.html">Products</a>
-          <a href="#about">About Us</a>
+        <Link to="/">Home</Link>
+          <Link to="/product">Product</Link>
           <a href="#contact">Contact Us</a>
-          <a href="Login" className="btn">
-            Login
-          </a>
+          <Link to="/signin" className="btn">
+          Login 
+          </Link>
         </nav>
         <div className="hamburger">
           <img src="./images/grid-outline.svg" alt="" />

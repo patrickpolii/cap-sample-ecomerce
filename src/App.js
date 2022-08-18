@@ -1,27 +1,22 @@
+import React from 'react'
 import "./App.css";
-import Header from "./components/Header"
-import Home from "./components/Home"
-import Services from "components/Services";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Main from "./pages/Main"
+import Product from "./pages/Product"
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
-import About from "components/About";
-import Contact from "components/Contact";
-import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Home/>
-      <Services/>
-     
-      <About/>
-      <Contact/>   
-      <Footer/>
-
-      <div className="scroll-top">
-        <img src="./images/arrow-up-outline.svg" alt="" />
-      </div>
-    </div>
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="product" element={<Product />} />
+            <Route path="signin" element={<Login />} />
+            <Route path="signup" element={<Register />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 
