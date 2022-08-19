@@ -1,8 +1,23 @@
 import React from 'react'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../config/firebase";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../css/product.css";
 function Product() {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const handleCart = () =>{
+    if (!user){
+        navigate('/signin')
+        alert('You need to login first.')
+    } else{
+        navigate('/cart')
+    }
+}
+
   return (
     <div className="Product">
       <Header />
@@ -17,7 +32,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -34,7 +49,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -51,7 +66,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -68,7 +83,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -88,7 +103,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -105,7 +120,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -122,7 +137,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
@@ -139,7 +154,7 @@ function Product() {
                 className="product-thumb"
                 alt=""
               />
-              <button className="card-btn">add to whislist</button>
+              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
               <h2 className="product-brand">Vegetables</h2>
