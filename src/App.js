@@ -6,6 +6,8 @@ import Product from "./pages/Product"
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from './pages/Cart';
+import ProductDetails from './pages/ProductDetails';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="product" element={<Product />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="details" element={<ProductDetails />} />
             <Route path="signin" element={<Login />} />
             <Route path="signup" element={<Register />} />
         </Routes>

@@ -131,6 +131,7 @@ section {
 
 .btn {
   display: inline-block;
+  font-size: medium;
   color: var(--green);
   background-color: var(--btn-green);
   padding: 1rem;
