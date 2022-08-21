@@ -4,6 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, logout } from "../config/firebase";
 
 function Header() {
+  const handleToggle = (e) => {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("show");
+  };
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const signedOut = () => {
@@ -22,12 +26,12 @@ function Header() {
         <a href="#contact">Contact Us</a>
         {user ? (
           <li>
-            <div
-              onClick={signedOut}
-              className="btn"
-            >
-              Sign Out
-            </div>
+            <a onClick={signedOut} className="btn">
+              Logout
+            </a>
+            <Link to="/cart" className="btn">
+              Cart
+            </Link>
           </li>
         ) : (
           <Link to="/signin" className="btn">
@@ -35,8 +39,8 @@ function Header() {
           </Link>
         )}
       </nav>
-      <div className="hamburger">
-        <img src="./images/grid-outline.svg" alt="" />
+      <div className="hamburger" onClick={handleToggle}>
+        <img src="./images/grid-outline.svg" alt=""/>
       </div>
     </header>
   );

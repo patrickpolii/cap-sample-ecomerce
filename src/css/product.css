@@ -14,8 +14,8 @@
     text-transform: capitalize;
 }
 .product-container{
-    padding: 0 10vw;
-    display: flex;
+    padding: 0 10vw; 
+    display: flexbox;
     margin-bottom: 30px;
 }
 

@@ -8,29 +8,30 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
-    display: flex;
+body .container{
     align-items: center;
     justify-content: center;
+    margin-top: 80px;
 }
 
 .container{
-    position: relative;
     max-width: 430px;
-    width: 100%;
+    width: 50%;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin: 0 20px;
+    margin-top: 100px;
+    
+    
 }
 
 .container .forms{
-    display: flex;
     align-items: center;
     height: 440px;
     width: 200%;
     transition: height 0.2s ease;
+    justify-content: center;
 }
 
 
@@ -142,11 +143,14 @@ body{
 .form .text{
     color: #333;
     font-size: 14px;
+    margin: 10px;
 }
+
 
 .form a.text{
     color: #4070f4;
     text-decoration: none;
+    margin: 10px;
 }
 .form a:hover{
     text-decoration: underline;
@@ -175,4 +179,7 @@ body{
 .form .login-signup{
     margin-top: 30px;
     text-align: center;
+}
+.login-signup .text{
+    margin: 10px;
 }

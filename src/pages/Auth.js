@@ -1,55 +1,14 @@
-import "../css/register.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Component } from "react";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
-import { Link } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
-import {
-  auth,
-  registerWithEmailAndPassword,
-} from '../config/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
-
-
-const Register = () => {
-    const [user, loading, error] = useAuthState(auth);
-    const navigate = useNavigate();
-
-    const [dataRegister, setDataRegister] = useState({
-        name: '',
-        email: '',
-        password: ''
-    });
-
-    const handleSubmit = async (e, params) => {
-        e.preventDefault();
-        if (params === 'register') {
-            await registerWithEmailAndPassword(
-                dataRegister.name,
-                dataRegister.email,
-                dataRegister.password
-              );
-              alert('User created successfully');    
-        } 
-    };
-    
-    useEffect(() => {
-        if (loading) {
-          return;
-        }
-        if (user) navigate('/');
-        if (error) alert(error);
-    }, [loading, user, error, navigate]);
-    
-
-
-  return(
-      <div className="container-form">
+class Auth extends Component {
+  render() {
+    return (
+      <div className="App">
         <h2>Sign Up</h2>
         <Form className="form">
           <FormGroup>
-            <Label for="exampleName" sm={2}>Name</Label>
+            <Label for="exampleName">Name</Label>
             <Input
               type="text"
               name="name"
@@ -90,22 +49,22 @@ const Register = () => {
               required
             />
           </FormGroup>
-          <div className="input-field button">
-                      <input onClick={e => handleSubmit (e, 'register')} type="button" value="Register"/>
-                  </div>
-          <div>
+          <Button onClick={e => handleSubmit (e, 'register')}>
+              Register
+          </Button>
+          <div className="signup">
+          <br></br>
             <span className="text">
               Already a member?
               <Link to="/signin" className="btn">
-                Login
+                Logim
               </Link>
             </span>
           </div>
-            
         </Form>
       </div>
-
-  );
+    );
+  }
 }
 
-export default Register;
+export default Auth;

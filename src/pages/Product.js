@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
 
 import Header from "../components/Header";
@@ -40,6 +40,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
           <div className="product-card">
             <div className="product-image">
@@ -57,6 +58,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
           <div className="product-card">
             <div className="product-image">
@@ -74,6 +76,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
           <div className="product-card">
             <div className="product-image">
@@ -91,6 +94,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
         </div>
 
@@ -111,6 +115,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
           <div className="product-card">
             <div className="product-image">
@@ -128,6 +133,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
           <div className="product-card">
             <div className="product-image">
@@ -145,6 +151,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
           <div className="product-card">
             <div className="product-image">
@@ -162,6 +169,7 @@ function Product() {
               <span className="price">$20</span>
               <span className="actual-price">$40</span>
             </div>
+            <Link to ="/details" className='button'>Details</Link>
           </div>
         </div>
       </section>
