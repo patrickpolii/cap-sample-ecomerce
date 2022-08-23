@@ -46,7 +46,7 @@ function Product() {
               <span className="price">{product.price}</span>
               <span className="actual-price">{product.priceActual}</span>
             </div>
-            <Link to ="/details" className='button'>Details</Link>
+            <Link to ={`details/${product.id}`} className='button'>Details</Link>
           </div>
 
           ))
