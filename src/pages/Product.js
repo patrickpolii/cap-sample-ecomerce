@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
+import { useProducts } from 'hooks/useProducts';
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -9,6 +10,9 @@ import "../css/product.css";
 function Product() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  let data = useProducts()
+  let products = data.products
+
   const handleCart = () =>{
     if (!user){
         navigate('/signin')
@@ -24,153 +28,29 @@ function Product() {
       <section className="product">
         <h1 className="product-category">products</h1>
         <div className="product-container">
-          <div className="product-card">
+        {
+          products.map((product, index) => (
+            <div className="product-card" key={index}>
             <div className="product-image">
-              <span className="discount-tag">50% off</span>
+              <span className="discount-tag">{product.discount} off</span>
               <img
-                src="./images/one-fresh-red-tomato-isolated-white.jpg"
+                src={product.thumbnails}
                 className="product-thumb"
                 alt=""
               />
               <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
             </div>
             <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
+              <h2 className="product-brand">{product.name}</h2>
+              <p className="product-short-des">{product.desc}</p>
+              <span className="price">{product.price}</span>
+              <span className="actual-price">{product.priceActual}</span>
             </div>
             <Link to ="/details" className='button'>Details</Link>
           </div>
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/fresh-lettuce.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/three-ripe-persimmon-fruits-placed-wooden-surface.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/fresh-raw-avocado.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
-        </div>
 
-        <div className="product-container">
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/fresh-broccoli-isolated.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/white-vegetable-healthy-fresh-natural.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/fruits-berries-platter-vegan-cuisine.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
-          <div className="product-card">
-            <div className="product-image">
-              <span className="discount-tag">50% off</span>
-              <img
-                src="./images/close-up-photo-oranges-whole-sliced-isolated-white-surface.jpg"
-                className="product-thumb"
-                alt=""
-              />
-              <div className="card-btn" onClick={handleCart} style={{cursor: 'pointer'}}>Add to Cart </div>
-            </div>
-            <div className="product-info">
-              <h2 className="product-brand">Vegetables</h2>
-              <p className="product-short-des">a short line about the Food..</p>
-              <span className="price">$20</span>
-              <span className="actual-price">$40</span>
-            </div>
-            <Link to ="/details" className='button'>Details</Link>
-          </div>
+          ))
+        }
         </div>
       </section>
       <Footer />
