@@ -43,8 +43,8 @@ function Product() {
             <div className="product-info">
               <h2 className="product-brand">{product.name}</h2>
               <p className="product-short-des">{product.desc}</p>
-              <span className="price">{product.price}</span>
-              <span className="actual-price">{product.priceActual}</span>
+              <span className="price">Rp {product.price}</span>
+              <span className="actual-price">Rp {product.priceActual}</span>
             </div>
             <Link to ={`details/${product.id}`} className='button'>Details</Link>
           </div>
