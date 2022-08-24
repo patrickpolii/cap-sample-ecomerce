@@ -1,4 +1,14 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  Button,
+  Row,
+  Col,
+} from "reactstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "hooks/useProduct";
 import Header from "../components/Header";
@@ -7,7 +17,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../config/firebase";
 
 const ProductDetails = () => {
-    const{id} = useParams()
+  const { id } = useParams();
   const navigate = useNavigate();
   let data = useProduct(id);
   let product = data.product;
@@ -24,33 +34,78 @@ const ProductDetails = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <div className="content">
-          <div className="product-card">
-            <h1>{product.name}</h1>
-            <h4>{product.desc}</h4>
-            <div className="product-pic">
-              <img src={`/${product.thumbnails}`} className="product-thumb" alt="" />
-            </div>
-            <br />
-            <div className="product-info">
-              <div className="product-price">${product.price}</div>
-              <div
-                className="product-button"
-                onClick={handleCart}
-                style={{ cursor: "pointer" }}
-              >
-                Add to Cart
+      <div className="container-detail">
+        <div className="content-detail">
+          <Row>
+            <Col sm="6">
+              <div className="product-card">
+                <Card
+                  style={{
+                    marginTop: "15rem",
+                    marginLeft: "10rem",
+                    width: "45rem",
+                    height: "40rem",
+                  }}
+                >
+                  <img alt="Sample" src={`/${product.thumbnails}`} />
+                  <CardBody>
+                    <CardTitle tag="h3">{product.name}</CardTitle>
+                    <CardText>{product.desc}</CardText>
+                    <Button onClick={handleCart} style={{ cursor: "pointer" }}>
+                      Add to Cart
+                    </Button>
+                  </CardBody>
+                </Card>
               </div>
-            </div>
-          </div>
-
-          <div className="product-details">
-            <h1>{product.name}</h1>
-            <p>
-            {product.desc}
-            </p>
-          </div>
+            </Col>
+            <Col sm="6">
+              <div className="product-card">
+                <Card
+                  style={{
+                    marginTop: "15rem",
+                    width: "50rem",
+                    height: "40rem",
+                  }}
+                >
+                  <CardTitle  style={{
+                    textAlign: "center",
+                    marginTop: "2.5rem",
+                    marginBottom: "2.5rem",
+                  }} tag="h1">{product.name}</CardTitle>
+                  <CardText style={{
+                    textAlign: "justify",
+                    marginLeft: "1rem",
+                   }} tag="h3">Description</CardText>
+                  <CardText
+                  style={{
+                    textAlign: "justify",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                   }}>{product.fullDesc}</CardText>
+                   <CardText style={{
+                    textAlign: "justify",
+                    marginLeft: "1rem",
+                   }} tag="h3">Price</CardText>
+                  <CardText
+                  style={{
+                    textAlign: "justify",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                   }}>Rp {product.price}</CardText>
+                   <CardText style={{
+                    textAlign: "justify",
+                    marginLeft: "1rem",
+                   }} tag="h3">Discount</CardText>
+                  <CardText
+                  style={{
+                    textAlign: "justify",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                   }}>{product.discount}</CardText>
+                </Card>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
       <Footer />

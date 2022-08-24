@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, logout } from "../config/firebase";
 
 function Header() {
-  const handleToggle = (e) => {
+  const handleToggle = () => {
     const navbar = document.querySelector(".navbar");
     navbar.classList.toggle("show");
   };
@@ -23,7 +23,6 @@ function Header() {
       <nav className="navbar">
         <Link to="/">Home</Link>
         <Link to="/product">Product</Link>
-        <a href="#contact">Contact Us</a>
         {user ? (
           <li>
             <a onClick={signedOut} className="btn">
@@ -40,7 +39,7 @@ function Header() {
         )}
       </nav>
       <div className="hamburger" onClick={handleToggle}>
-        <img src="./images/grid-outline.svg" alt=""/>
+        <img src="./images/grid-outline.svg" alt="" />
       </div>
     </header>
   );
