@@ -10,11 +10,13 @@ import {
   Col,
 } from "reactstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProduct } from "hooks/useProduct";
+import { useProduct } from "../hooks/useProduct";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../config/firebase";
+import { useDispatch } from "react-redux";
+import { useCart } from "../handler/useCart";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -22,11 +24,13 @@ const ProductDetails = () => {
   let data = useProduct(id);
   let product = data.product;
   const [user] = useAuthState(auth);
+  const {handlerAddToCart} = useCart()
   const handleCart = () => {
     if (!user) {
       navigate("/signin");
       alert("You need to login first.");
     } else {
+      handlerAddToCart(product);
       navigate("/cart");
     }
   };
@@ -67,41 +71,70 @@ const ProductDetails = () => {
                     height: "40rem",
                   }}
                 >
-                  <CardTitle  style={{
-                    textAlign: "center",
-                    marginTop: "2.5rem",
-                    marginBottom: "2.5rem",
-                  }} tag="h1">{product.name}</CardTitle>
-                  <CardText style={{
-                    textAlign: "justify",
-                    marginLeft: "1rem",
-                   }} tag="h3">Description</CardText>
+                  <CardTitle
+                    style={{
+                      textAlign: "center",
+                      marginTop: "2.5rem",
+                      marginBottom: "2.5rem",
+                    }}
+                    tag="h1"
+                  >
+                    {product.name}
+                  </CardTitle>
                   <CardText
-                  style={{
-                    textAlign: "justify",
-                    marginLeft: "1rem",
-                    marginRight: "1rem",
-                   }}>{product.fullDesc}</CardText>
-                   <CardText style={{
-                    textAlign: "justify",
-                    marginLeft: "1rem",
-                   }} tag="h3">Price</CardText>
+                    style={{
+                      textAlign: "justify",
+                      marginLeft: "1rem",
+                    }}
+                    tag="h3"
+                  >
+                    Description
+                  </CardText>
                   <CardText
-                  style={{
-                    textAlign: "justify",
-                    marginLeft: "1rem",
-                    marginRight: "1rem",
-                   }}>Rp {product.price}</CardText>
-                   <CardText style={{
-                    textAlign: "justify",
-                    marginLeft: "1rem",
-                   }} tag="h3">Discount</CardText>
+                    style={{
+                      textAlign: "justify",
+                      marginLeft: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  >
+                    {product.fullDesc}
+                  </CardText>
                   <CardText
-                  style={{
-                    textAlign: "justify",
-                    marginLeft: "1rem",
-                    marginRight: "1rem",
-                   }}>{product.discount}</CardText>
+                    style={{
+                      textAlign: "justify",
+                      marginLeft: "1rem",
+                    }}
+                    tag="h3"
+                  >
+                    Price
+                  </CardText>
+                  <CardText
+                    style={{
+                      textAlign: "justify",
+                      marginLeft: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  >
+                    Rp {product.price}
+                  </CardText>
+                  <CardText
+                    style={{
+                      textAlign: "justify",
+                      marginLeft: "1rem",
+                    }}
+                    tag="h3"
+                  >
+                    Discount
+                  </CardText>
+                  <CardText
+                    style={{
+                      textAlign: "justify",
+                      marginLeft: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  >
+                    {product.discount}
+                  </CardText>
                 </Card>
               </div>
             </Col>
